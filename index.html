@@ -35,6 +35,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
+        }
+
+        .navbar-brand span {
+            margin: 0 auto; /* Center the content */
         }
 
         .container {
@@ -124,6 +129,18 @@
                 transform: translateY(0);
             }
         }
+
+        /* Media Query for Mobile Size (320px) */
+        @media (max-width: 320px) {
+            .card {
+                max-width: 90%; /* Make card wider */
+                width: 90%;
+            }
+
+            canvas {
+                max-width: 90%; /* Make chart wider */
+            }
+        }
     </style>
 </head>
 
@@ -156,6 +173,9 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Heading for Donated Amounts -->
+        <h3 style="margin-top: 1rem;">82 kg rice donated | 20.5 kg daal donated</h3>
     </div>
 
     <!-- Donation Data Table -->
@@ -175,13 +195,13 @@
                     <td>John Doe</td>
                     <td>123-456-7890</td>
                     <td>Rice</td>
-                    <td>10</td>
+                    <td>82</td>
                 </tr>
                 <tr>
                     <td>Jane Smith</td>
                     <td>987-654-3210</td>
                     <td>Daal</td>
-                    <td>5</td>
+                    <td>20.5</td>
                 </tr>
                 <!-- Add more rows as needed -->
             </tbody>
@@ -193,7 +213,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="Ibhan.png" alt="Logo" width="50" height="50">
+                    <img src="img\Ibhan.png" alt="Logo" width="50" height="50">
                     <p class="animated-text">THE HELPING HANDS</p>
                 </div>
 
@@ -216,7 +236,7 @@
         var dataRice = {
             labels: ['Rice Donated', 'Remaining'],
             datasets: [{
-                data: [10, 90],
+                data: [82, 18], // Updated data
                 backgroundColor: ['#647D87', '#f1f1f1'],
                 borderWidth: 0
             }]
@@ -240,7 +260,7 @@
         var dataDaal = {
             labels: ['Daal Donated', 'Remaining'],
             datasets: [{
-                data: [5, 95],
+                data: [20.5, 29.5], // Updated data
                 backgroundColor: ['#647D87', '#f1f1f1'],
                 borderWidth: 0
             }]
