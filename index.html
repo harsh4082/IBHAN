@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doughnut Chart</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/d304e9faef.js" crossorigin="anonymous"></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+            background-color: #FAEF9B;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 0;
+            width: 100%;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 1.25rem;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            max-width: 20rem;
+            text-align: center;
+            width: 45%;
+            margin: 1rem;
+        }
+
+        canvas {
+            max-width: 100%;
+            margin: 1rem 0;
+        }
+
+        .chart-label {
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.25rem;
+            overflow-x: auto;
+        }
+
+        th,
+        td {
+            border: 0.0625rem solid #ddd;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #5C8374;
+        }
+
+        td {
+            background-color: #93B1A6;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #0F1035;
+            /* Updated background color */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            margin-top: 1.25rem;
+            /* Adjusted margin */
+            width: 100%;
+        }
+
+        .animated-text {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 5px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        img {
+            width: auto;
+        }
+
+        i {
+            /* width:    25px; */
+            height: 25px;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <span class="navbar-brand">IBHAN: The Helping Hands</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="card-container">
+
+            <!-- Rice Doughnut Chart -->
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="riceChart"></canvas>
+                    <p class="chart-label">Rice Donated</p>
+                </div>
+            </div>
+
+            <!-- Daal Doughnut Chart -->
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="daalChart"></canvas>
+                    <p class="chart-label">Daal Donated</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Data Table -->
+    <div class="container">
+        <h2>Donation Data</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Contact No.</th>
+                    <th>Donated</th>
+                    <th>KG</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>123-456-7890</td>
+                    <td>Rice</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>987-654-3210</td>
+                    <td>Daal</td>
+                    <td>5</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="img\Ibhan.png" alt="Logo" width="50" height="50">
+                    <p class="animated-text">THE HELPING HANDS</p>
+                </div>
+
+                <div class="col-md-4">
+                    <p class="animated-text">Email: your@email.com</p>
+                    <p class="animated-text">Phone: +123456789</p>
+                </div>
+                <div class="col-md-4" style="width: 100px;">
+                    <a href="https://www.instagram.com/ibhan_helpinghands?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                        <i class="fa-brands fa-instagram fa-shake fa-xl" style="color: #db4d71;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Script Section -->
+    <script>
+        // Rice Doughnut Chart
+        var dataRice = {
+            labels: ['Rice Donated', 'Remaining'],
+            datasets: [{
+                data: [10, 90],
+                backgroundColor: ['#647D87', '#f1f1f1'],
+                borderWidth: 0
+            }]
+        };
+
+        var optionsRice = {
+            cutoutPercentage: 80,
+            aspectRatio: 1,
+            legend: {
+                display: false
+            }
+        };
+
+        var riceChart = new Chart(document.getElementById('riceChart').getContext('2d'), {
+            type: 'doughnut',
+            data: dataRice,
+            options: optionsRice
+        });
+
+        // Daal Doughnut Chart
+        var dataDaal = {
+            labels: ['Daal Donated', 'Remaining'],
+            datasets: [{
+                data: [5, 95],
+                backgroundColor: ['#647D87', '#f1f1f1'],
+                borderWidth: 0
+            }]
+        };
+
+        var optionsDaal = {
+            cutoutPercentage: 80,
+            aspectRatio: 1,
+            legend: {
+                display: false
+            }
+        };
+
+        var daalChart = new Chart(document.getElementById('daalChart').getContext('2d'), {
+            type: 'doughnut',
+            data: dataDaal,
+            options: optionsDaal
+        });
+    </script>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
