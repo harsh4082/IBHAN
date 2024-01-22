@@ -27,19 +27,29 @@
             color: #fff;
             padding: 1rem 0;
             width: 100%;
+            height: 100px;
         }
 
         .navbar-brand {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
+            
         }
 
-        .navbar-brand span {
-            margin: 0 auto; /* Center the content */
+        .navbar-brand img {
+            margin-right: 10px;
+        }
+
+        .navbar-collapse {
+            justify-content: center;
+        }
+
+        .navbar-nav {
+            text-align: center;
         }
 
         .container {
@@ -54,7 +64,7 @@
         }
 
         .card {
-            max-width: 20rem;
+            max-width: 15rem; /* Smaller width */
             text-align: center;
             width: 45%;
             margin: 1rem;
@@ -67,28 +77,6 @@
 
         .chart-label {
             font-weight: 500;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.25rem;
-            overflow-x: auto;
-        }
-
-        th,
-        td {
-            border: 0.0625rem solid #ddd;
-            padding: 1rem;
-            text-align: left;
-        }
-
-        th {
-            background-color: #5C8374;
-        }
-
-        td {
-            background-color: #93B1A6;
         }
 
         /* Footer Styles */
@@ -140,6 +128,15 @@
             canvas {
                 max-width: 90%; /* Make chart wider */
             }
+            .navbar-brand {
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            margin-left: 27px;
+        }
         }
          @media (max-width: 375px) {
             .card {
@@ -167,12 +164,17 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <span class="navbar-brand">
-                <img src="Ibhan.png" alt="Logo" width="50" height="50">
+                <img src="img/Ibhan.png" alt="Logo" width="50" height="50">
                 IBHAN: The Helping Hands
             </span>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav">
+                    <!-- Add your navigation links here -->
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -201,42 +203,12 @@
         <h3 style="margin-top: 1rem;">82 kg rice donated | 20.5 kg daal donated</h3>
     </div>
 
-    <!-- Donation Data Table 
-    <div class="container">
-        <h2>Donation Data</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Contact No.</th>
-                    <th>Donated</th>
-                    <th>KG</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>John Doe</td>
-                    <td>123-456-7890</td>
-                    <td>Rice</td>
-                    <td>82</td>
-                </tr>
-                <tr>
-                    <td>Jane Smith</td>
-                    <td>987-654-3210</td>
-                    <td>Daal</td>
-                    <td>20.5</td>
-                </tr>
-                 Add more rows as needed 
-            </tbody>
-        </table>
-    </div> -->
-
     <!-- Footer Section -->
     <div class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="Ibhan.png" alt="Logo" width="50" height="50">
+                    <img src="img/Ibhan.png" alt="Logo" width="50" height="50">
                     <p class="animated-text">THE HELPING HANDS</p>
                 </div>
 
@@ -257,11 +229,11 @@
     <script>
         // Rice Bar Graph
         var dataRice = {
-            labels: ['Rice Donated', 'Remaining'],
+            labels: ['Rice Donated'],
             datasets: [{
                 label: 'Rice Donated',
-                data: [82, 18], // Updated data
-                backgroundColor: ['#647D87', '#f1f1f1'],
+                data: [82], // Updated data
+                backgroundColor: '#647D87',
                 borderWidth: 0
             }]
         };
@@ -272,10 +244,11 @@
                     display: false
                 },
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    max: 100, // Set maximum limit
                 }
             },
-            aspectRatio: 2,
+            aspectRatio: 1,
             legend: {
                 display: false
             }
@@ -289,11 +262,11 @@
 
         // Daal Bar Graph
         var dataDaal = {
-            labels: ['Daal Donated', 'Remaining'],
+            labels: ['Daal Donated'],
             datasets: [{
                 label: 'Daal Donated',
-                data: [20.5, 29.5], // Updated data
-                backgroundColor: ['#647D87', '#f1f1f1'],
+                data: [20.5], // Updated data
+                backgroundColor: '#647D87',
                 borderWidth: 0
             }]
         };
@@ -304,10 +277,11 @@
                     display: false
                 },
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    max: 50, // Set maximum limit
                 }
             },
-            aspectRatio: 2,
+            aspectRatio: 1,
             legend: {
                 display: false
             }
