@@ -169,7 +169,10 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
-            <span class="navbar-brand">IBHAN: The Helping Hands</span>
+            <span class="navbar-brand">
+                <img src="Ibhan.png" alt="Logo" width="50" height="50">
+                IBHAN: The Helping Hands
+            </span>
         </div>
     </nav>
 
@@ -177,7 +180,7 @@
     <div class="container">
         <div class="card-container">
 
-            <!-- Rice Doughnut Chart -->
+            <!-- Rice Bar Graph -->
             <div class="card">
                 <div class="card-body">
                     <canvas id="riceChart"></canvas>
@@ -185,7 +188,7 @@
                 </div>
             </div>
 
-            <!-- Daal Doughnut Chart -->
+            <!-- Daal Bar Graph -->
             <div class="card">
                 <div class="card-body">
                     <canvas id="daalChart"></canvas>
@@ -252,10 +255,11 @@
 
     <!-- Footer Script Section -->
     <script>
-        // Rice Doughnut Chart
+        // Rice Bar Graph
         var dataRice = {
             labels: ['Rice Donated', 'Remaining'],
             datasets: [{
+                label: 'Rice Donated',
                 data: [82, 18], // Updated data
                 backgroundColor: ['#647D87', '#f1f1f1'],
                 borderWidth: 0
@@ -263,23 +267,31 @@
         };
 
         var optionsRice = {
-            cutoutPercentage: 80,
-            aspectRatio: 1,
+            scales: {
+                x: {
+                    display: false
+                },
+                y: {
+                    beginAtZero: true
+                }
+            },
+            aspectRatio: 2,
             legend: {
                 display: false
             }
         };
 
         var riceChart = new Chart(document.getElementById('riceChart').getContext('2d'), {
-            type: 'doughnut',
+            type: 'bar',
             data: dataRice,
             options: optionsRice
         });
 
-        // Daal Doughnut Chart
+        // Daal Bar Graph
         var dataDaal = {
             labels: ['Daal Donated', 'Remaining'],
             datasets: [{
+                label: 'Daal Donated',
                 data: [20.5, 29.5], // Updated data
                 backgroundColor: ['#647D87', '#f1f1f1'],
                 borderWidth: 0
@@ -287,15 +299,22 @@
         };
 
         var optionsDaal = {
-            cutoutPercentage: 80,
-            aspectRatio: 1,
+            scales: {
+                x: {
+                    display: false
+                },
+                y: {
+                    beginAtZero: true
+                }
+            },
+            aspectRatio: 2,
             legend: {
                 display: false
             }
         };
 
         var daalChart = new Chart(document.getElementById('daalChart').getContext('2d'), {
-            type: 'doughnut',
+            type: 'bar',
             data: dataDaal,
             options: optionsDaal
         });
