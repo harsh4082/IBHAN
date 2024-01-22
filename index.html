@@ -37,11 +37,11 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            
         }
 
         .navbar-brand img {
             margin-right: 10px;
+            width: 100px;
         }
 
         .navbar-collapse {
@@ -82,13 +82,11 @@
         /* Footer Styles */
         .footer {
             background-color: #0F1035;
-            /* Updated background color */
             color: #fff;
             text-align: center;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
             margin-top: 1.25rem;
-            /* Adjusted margin */
             width: 100%;
         }
 
@@ -102,12 +100,13 @@
             animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        img {
+        /* img {
             width: auto;
-        }
+            max-width: 100%;
+            height: auto;
+        } */
 
         i {
-            /* width:    25px; */
             height: 25px;
         }
 
@@ -118,44 +117,25 @@
             }
         }
 
-        /* Media Query for Mobile Size (320px) */
-        @media (max-width: 320px) {
+        /* Media Queries */
+        @media (max-width: 768px) {
             .card {
-                max-width: 90%; /* Make card wider */
                 width: 90%;
-            }
-
-            canvas {
-                max-width: 90%; /* Make chart wider */
             }
             .navbar-brand {
-            font-size: 1.1rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80%;
-            margin-left: 27px;
-        }
-        }
-         @media (max-width: 375px) {
-            .card {
-                max-width: 90%; /* Make card wider */
-                width: 90%;
+                font-size: 1.1rem;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 80%;
+                margin-left: 27px;
             }
+        }
 
-            canvas {
-                max-width: 90%; /* Make chart wider */
-            }
-        }
-         @media (max-width: 425px) {
-            .card {
-                max-width: 90%; /* Make card wider */
-                width: 90%;
-            }
-
-            canvas {
-                max-width: 90%; /* Make chart wider */
+        @media (max-width: 425px) {
+            .col-md-4 {
+                text-align: center; /* Center the content in the column */
             }
         }
     </style>
@@ -198,7 +178,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Heading for Donated Amounts -->
         <h3 style="margin-top: 1rem;">82 kg rice donated | 20.5 kg daal donated</h3>
     </div>
@@ -208,17 +188,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="Ibhan.png" alt="Logo" width="50" height="50">
+                    <img src="Ibhan.png" alt="Logo" class="size" width="100px" height="70px">
                     <p class="animated-text">THE HELPING HANDS</p>
                 </div>
 
                 <div class="col-md-4">
-                    <p class="animated-text">Email: your@email.com</p>
-                    <p class="animated-text">Phone: +123456789</p>
+                    <p class="animated-text">For more information Contact</p>
+                    <p class="animated-text">Vikas ware : <a href="tel:+91 8452847676">+91 8452847676</a></p>
+                    <p class="animated-text">Mayur solanki : <a href="tel:+91 8452847676">+91 9819121347</a></p>
                 </div>
                 <div class="col-md-4" style="width: 100px;">
                     <a href="https://www.instagram.com/ibhan_helpinghands?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
-                        <i class="fa-brands fa-instagram fa-shake fa-xl" style="color: #db4d71;"></i>
+                        <i class="fa-brands fa-instagram fa-shake fa-xl" style="color: #db4d71; display: block; margin: 0 auto;"></i>
                     </a>
                 </div>
             </div>
